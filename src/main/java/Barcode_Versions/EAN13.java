@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -31,7 +32,17 @@ public class EAN13 {
 		this.EAN13_Number = EAN13_Number;
 	}
 	
-	private String calculateBinary() {
+	public EAN13() {}
+	
+	public void setEAN13(String EAN13_Number) {
+		this.EAN13_Number = EAN13_Number;
+	}
+	
+	public String getEAN13() {
+		return EAN13_Number;
+	}
+	
+	public String calculateBinary() {
 		String binary = beginning_sequence;
 		String first_digit_sequence = first_digit_sequences[Character.getNumericValue(EAN13_Number.charAt(0))];
 		
@@ -53,7 +64,7 @@ public class EAN13 {
 		return binary;
 	}
 
-	private BufferedImage generateBarcodeImage() {
+	public BufferedImage generateBarcodeImage() {
 		int singleBarWidth = 3;
 		int height = 150;
 		int delimiter_height = height + 30;
@@ -94,13 +105,49 @@ public class EAN13 {
 	
 	public void saveAs(String fileName) {
 		try {
-			ImageIO.write(generateBarcodeImage(), "PNG", new File(fileName + ".PNG"));
+			ImageIO.write(generateBarcodeImage(), "png", new File(fileName + ".png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void printBinary() {
-		System.out.println(calculateBinary());
+	public String getBinary() {
+		return calculateBinary();
 	}	
+	
+	public String generateRandomEAN13Number() throws Exception {
+		String ean13 = "";
+		Random random = new Random();
+		
+		for(int i = 0; i < 12; i++) {
+			ean13 += String.valueOf(random.nextInt(10));
+		}
+		
+		ean13 += String.valueOf(calculateCheckingDigit(ean13));
+		return ean13;	
+	}
+	
+	public String generateRandomEAN13Number(String gs1_prefix, String manufacturer_number, String product_number) throws Exception {
+		String ean13 = gs1_prefix + manufacturer_number + product_number;
+		if(ean13.length() != 12) throw new Exception("The gs1 prefix, manufacturer number and product number have not a total lenght of 12! Lenght: " + ean13.length()); 
+		ean13 += String.valueOf(calculateCheckingDigit(ean13));
+		return ean13;
+	}
+
+	public String calculateCheckingDigit(String ean13_without_checking_digit) throws Exception {
+		if(ean13_without_checking_digit.length() != 12) throw new Exception("The ean13 number without the checking digit has not a lenght of 12! Lenght: " + ean13_without_checking_digit.length());
+		
+		int sum = 0;
+		
+		for(int i = 0; i < 12; i++) {
+			if(i % 2 == 0) {
+				sum += Character.getNumericValue(ean13_without_checking_digit.charAt(i));
+			} else {
+				sum += Character.getNumericValue(ean13_without_checking_digit.charAt(i)) * 3;
+			}
+		}
+		int checkingDigit = 10 - sum % 10;
+		if(checkingDigit == 10) return "0";
+		return String.valueOf(checkingDigit);
+	}
 }
