@@ -8,6 +8,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import java.awt.Color;
+import java.awt.Font;
 
 public class EAN13 {
 	
@@ -53,16 +54,18 @@ public class EAN13 {
 	}
 
 	private BufferedImage generateBarcodeImage() {
-		int width = 5;
+		int singleBarWidth = 3;
 		int height = 150;
-		int delimiter_height = 180;
-		int fontSize = 20;
-		
-		BufferedImage bi = new BufferedImage(width*95, delimiter_height, BufferedImage.TYPE_INT_RGB);
+		int delimiter_height = height + 30;
+		int fontSize = 35;	
+		int offset = 40;
+		int imageWidth = singleBarWidth*95 + offset*2;
+		int imageHeight = height + offset;
+		BufferedImage bi = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
 		String binary = calculateBinary();
 		Graphics2D g2d = bi.createGraphics();
 		g2d.setColor(Color.white);
-		g2d.fillRect(0,0,width*95, delimiter_height);
+		g2d.fillRect(0,0,imageWidth,imageHeight);
 		
 		for(int i = 0; i < 95; i++) {
 			if(binary.charAt(i) == '0') {
@@ -72,11 +75,20 @@ public class EAN13 {
 			}
 			
 			if((i > 2 && i < 46) || (i > 48 && i < 92)) {
-				g2d.fillRect(i*width, 0, width, height);
+				g2d.fillRect(i*singleBarWidth + offset, 0, singleBarWidth, height);
 			} else {
-				g2d.fillRect(i*width, 0, width, delimiter_height);
+				g2d.fillRect(i*singleBarWidth + offset, 0, singleBarWidth, delimiter_height);
 			}
 		}
+		
+		g2d.setFont(new Font("Arial", Font.PLAIN, fontSize));
+		g2d.setPaint(Color.black);
+		char firstDigit = EAN13_Number.charAt(0);
+		String before_middle = EAN13_Number.substring(1,7);
+		String after_middle = EAN13_Number.substring(7,13);
+		String ean13 = firstDigit + "   " + before_middle + "  " + after_middle;
+		
+		g2d.drawString(ean13, 10, height + (int)(offset/1.2));
 		return bi;
 	}
 	
