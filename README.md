@@ -16,9 +16,9 @@ EAN-13 number: 0701197205291 (only consists of 12 digits because the check digit
 
 lets number the digits with a range of 1-12:
 
-Digits|`1`|`2`|`3`|`4`|`5`|`6`|`7`|`8`|`9`|`10`|`11`|`12`|
+Number|`1`|`2`|`3`|`4`|`5`|`6`|`7`|`8`|`9`|`10`|`11`|`12`|
 ------|-|-|-|-|-|-|-|-|-|-|-|-|
-EAN   |0|7|0|1|1|9|7|2|0|5|2|9|
+EAN-13 digits|0|7|0|1|1|9|7|2|0|5|2|9|
 
 -> 0+0+1+7+0+2 = 10 (odd numbered numbers were added together)
 
