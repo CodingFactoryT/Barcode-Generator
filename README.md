@@ -12,6 +12,13 @@ if you number the digits of the EAN-13 code with the numbers 1-12, every number 
 every number that is numbered with an odd number is also added together, but the sum of these odd numbered numbers is multiplied by 3 after that.
 Next, you add the two sums together and calculate the difference to the next tens. This difference is your check number. Let me show you this with an example:
 
+EAN-13 number: 0701197205291 (only consists of 12 digits because the check digit will be appended later)
+
+lets number the digits with a range of 1-12:
+
+Digits|1|2|3|4|5|6|7|8|9|10|11|12
+---------------------------------
+EAN   |0|7|0|1|1|9|7|2|0|5|2|9
 
 
 ## Examples
