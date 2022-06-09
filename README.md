@@ -30,6 +30,10 @@ EAN-13 digit|0|7|0|1|1|9|7|2|0|5|2|9|
 
 and there we have it, the check number is 1. That wasn´t that hard, right ;-)? If you want to see how to implement that in Java, feel free to look it up in the source code above before we actually start to understand what these black lines in the barcode mean.
 
+If the sum of the two sums would already be a tens, the check digit would be 0 (for example the check digit of 644606181130 is 0)
+
+After you have calculated the check digit, it is appended to the others: <br>
+for example if the EAN-13 number with currently only 12 digits is 764838694596 and the check digit we calculated is 1, we just append it to the other digits and we get the full EAN-13 number which then also has 13 digits (7648386945961)
 
 ## Examples
 ![9582904492392](https://user-images.githubusercontent.com/94389494/172921188-97db97f6-8c97-4ca6-8cf1-629228d39841.png)
