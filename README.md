@@ -1,4 +1,4 @@
-#How EAN-13 Barcodes work
+# How EAN-13 Barcodes work
 
 As the number already tells us, the EAN-13 barcode contains 13 digits in total. 12 of these digits contain information about 
 <ul>
