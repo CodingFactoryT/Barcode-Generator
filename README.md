@@ -1,0 +1,22 @@
+#How EAN-13 Barcodes work
+
+As the number already tells us, the EAN-13 barcode contains 13 digits in total. 12 of these digits contain information about 
+<ul>
+ <li> a country prefix </li>
+ <li> the number of the manufacterer who produced the product </li>
+ <li> the product number itself </li>
+</ul>
+
+The 13th and last digit is a check number to check if the scanner has read the barcode correctly. This check number is calculated as follows:
+if you number the digits of the EAN-13 code with the numbers 1-12, every number that is numbered with an even number is added together, 
+every number that is numbered with an odd number is also added together, but the sum of these odd numbered numbers is multiplied by 3 after that.
+Next, you add the two sums together and calculate the difference to the next tens. This difference is your check number. Let me show you this with an example:
+
+
+
+## Examples
+![9582904492392](https://user-images.githubusercontent.com/94389494/172921188-97db97f6-8c97-4ca6-8cf1-629228d39841.png)
+![1198038002826](https://user-images.githubusercontent.com/94389494/172921231-7362f6f9-094d-44eb-bb3d-3e5e682259fb.png)
+![4853539853632](https://user-images.githubusercontent.com/94389494/172921289-a599ee17-13e5-4ec9-806a-befe685cfc50.png)
+![6826673591515](https://user-images.githubusercontent.com/94389494/172921319-6f2e8818-1b82-489e-872c-9a815c7b9887.png)
+
