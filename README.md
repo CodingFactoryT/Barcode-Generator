@@ -21,6 +21,7 @@ Digits|`1`|`2`|`3`|`4`|`5`|`6`|`7`|`8`|`9`|`10`|`11`|`12`|
 EAN   |0|7|0|1|1|9|7|2|0|5|2|9|
 
 -> 0+0+1+7+0+2 = 10 (odd numbered numbers were added together)
+
 -> (7+1+9+2+5+9) * 3 = 99 (even numbered numbers were added together, but were also multiplied by 3 at the end)
 
 --> 10 + 99 = 109 (the two sums were added together)
