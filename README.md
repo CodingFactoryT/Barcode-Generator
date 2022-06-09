@@ -1,12 +1,12 @@
 # How EAN-13 Barcodes work
-
-As the number already tells us, the EAN-13 barcode contains 13 digits in total. 12 of these digits contain information about 
+As the name already tells us, the EAN-13 barcode contains 13 digits in total. 12 of these digits contain information about 
 <ul>
  <li> a country prefix </li>
  <li> the number of the manufacterer who produced the product </li>
  <li> the product number itself </li>
 </ul>
 
+## The check digit and how it is calculated
 The 13th and last digit is a check number to check if the scanner has read the barcode correctly. This check number is calculated as follows:
 if you number the digits of the EAN-13 code with the numbers 1-12, every number that is numbered with an odd number is added together, 
 every number that is numbered with an even number is also added together, but the sum of these odd numbered numbers is multiplied by 3 after that.
@@ -27,7 +27,7 @@ EAN   |0|7|0|1|1|9|7|2|0|5|2|9|
 
 --> 110 (next tens) - 109 = <b>1</b>
 
-and there we have it, the check number is 1. That wasn´t that hard, right ;-)? If you want to see how to implements that in Java, feel free to look it up in the source code above.
+and there we have it, the check number is 1. That wasn´t that hard, right ;-)? If you want to see how to implement that in Java, feel free to look it up in the source code above before we actually start to understand what these black lines in the barcode mean.
 
 
 ## Examples
