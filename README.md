@@ -1,4 +1,5 @@
 # What is EAN-13?
+EAN stands for <b>E</b>uropean <b>A</b>rticle <b>N</b>umber and is a number which is spreaded world wide to identify products, for example in the supermarket. <br>
 As the name already tells us, the EAN-13 barcode contains 13 digits in total. 12 of these digits contain information about 
 <ul>
  <li> a country prefix </li>
